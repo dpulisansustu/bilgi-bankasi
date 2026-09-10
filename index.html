@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lisansüstü Bilgi Bankası - Kütahya Dumlupınar Üniversitesi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-dark: #0f172a;
+      --primary-hover: #172554;
+      --primary-light: #eff6ff;
+      --accent: #2563eb;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ÜST BAŞLIK */
+    .topbar {
+      background: var(--primary-dark);
+      color: #ffffff;
+      padding: 16px 24px;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .topbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .brand-badge {
+      background: var(--accent);
+      font-weight: 800;
+      font-size: 15px;
+      padding: 6px 14px;
+      border-radius: 8px;
+      letter-spacing: 1px;
+    }
+
+    .brand-titles h1 {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .brand-titles p {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .updated-tag {
+      font-size: 12px;
+      color: #cbd5e1;
+      background: #1e293b;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* HERO & BÜYÜK ARAMA */
+    .hero {
+      background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+      padding: 48px 20px 36px;
+      text-align: center;
+    }
+
+    .hero-container {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      color: #ffffff;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #94a3b8;
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #94a3b8;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 62px;
+      padding: 0 54px;
+      font-size: 16px;
+      border-radius: var(--radius);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      background: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25);
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: transparent;
+      font-size: 22px;
+      color: #94a3b8;
+      cursor: pointer;
+      display: none;
+    }
+
+    .categories-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .cat-pill {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    .cat-pill:hover {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+    }
+
+    .cat-pill.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    /* ANA İÇERİK & SEKMELER */
+    .main-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 12px;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 28px;
+    }
+
+    .tab-btn {
+      padding: 12px 20px;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    /* SORU KARTLARI */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      border-color: #cbd5e1;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .card-cat {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+
+    .card-keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .kw-tag {
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      font-size: 12px;
+    }
+
+    .card-footer span {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .card-footer small {
+      color: var(--text-muted);
+    }
+
+    /* DAHİLİ KOD TABLOSU */
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f8fafc;
+      padding: 14px 18px;
+      font-weight: 700;
+      color: #475569;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tr:hover td {
+      background: #f8fafc;
+    }
+
+    .code-badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      font-weight: 800;
+      font-family: monospace;
+      font-size: 15px;
+      padding: 3px 12px;
+      border-radius: 6px;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 680px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      animation: popIn 0.2s ease-out;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .modal-cat {
+      background: #eff6ff;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .modal-close {
+      border: none;
+      background: transparent;
+      font-size: 26px;
+      color: #94a3b8;
+      cursor: pointer;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 18px;
+      line-height: 1.4;
+    }
+
+    .modal-answer {
+      background: #f8fafc;
+      border-left: 4px solid var(--accent);
+      padding: 18px 22px;
+      border-radius: 4px;
+      font-size: 15px;
+      color: #1e293b;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      margin-bottom: 20px;
+    }
+
+    .modal-source {
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px dashed var(--border);
+      padding-top: 14px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h2 {
+        font-size: 22px;
+      }
+      .topbar-container {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ÜST BAR -->
+  <header class="topbar">
+    <div class="topbar-container">
+      <a href="#" class="brand">
+        <div class="brand-badge">DPÜ · LEE</div>
+        <div class="brand-titles">
+          <h1>Lisansüstü Bilgi Bankası</h1>
+          <p>Kütahya Dumlupınar Üniversitesi · Lisansüstü Eğitim Enstitüsü</p>
+        </div>
+      </a>
+      <div class="updated-tag" id="lastUpdated">Güncel Bilgiler</div>
+    </div>
+  </header>
+
+  <!-- HERO / ARAMA BÖLÜMÜ -->
+  <section class="hero">
+    <div class="hero-container">
+      <h2>Aradığınız bilgiye anında ulaşın</h2>
+      <p>Tez süreçleri, af şartları, kayıt yenileme, mevzuat ve sıkça sorulan sorularda arama yapın.</p>
+
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Soru veya kelime yazın (Örn: tez teslimi, askerlik, harç, danışman)..."
+          autocomplete="off"
+        >
+        <button id="clearSearch" class="clear-btn">×</button>
+      </div>
+
+      <div class="categories-bar" id="categoriesBar">
+        <button class="cat-pill active" data-category="">Tümü</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANA İÇERİK -->
+  <main class="main-section">
+    <!-- SORULAR GRID -->
+    <div id="questionsContainer" class="cards-grid"></div>
+  </main>
+
+  <!-- DETAY MODALI -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-cat" id="mCategory">Kategori</span>
+        <button class="modal-close" id="mClose">×</button>
+      </div>
+      <h2 class="modal-title" id="mQuestion">Soru Metni</h2>
+      <div class="modal-answer" id="mAnswer">Cevap</div>
+      <div class="modal-source" id="mSource">Kaynak</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Kütahya Dumlupınar Üniversitesi</strong> · Lisansüstü Eğitim Enstitüsü Bilgi Bankası</p>
+    <p style="margin-top: 4px; font-size: 12px; color: #64748b;">Kurumsal Bilgi ve Çağrı Merkezi Portalı</p>
+  </footer>
+
+    <script>
+    // DOĞRUDAN GÖMÜLÜ VERİ (Fetch başarısız olsa bile anında açılır)
+    const EMBEDDED_DATA = {
+  "updatedAt": "10.09.2026 21:49",
+  "categories": [
+    "Af / Askerlik",
+    "Dahili Kodlar",
+    "Genel",
+    "Kayıt İşlemleri",
+    "Tarihler",
+    "Tezli / Doktora",
+    "Tezsiz",
+    "Yabancı Uyruklu"
+  ],
+  "questions": [
+    {
+      "id": 82,
+      "question": "Tezli yüksek lisans öğrencilerinin derslerini başarıyla tamamlamış sayılabilmesi için AGNO alt sınırı nedir?",
+      "answer": "Tezli yüksek lisans öğreniminde öğrencilerin derslerini başarıyla tamamlamış sayılabilmesi için AGNO'nun en az 2,50 olması gerekir.",
+      "category": "Tezli / Doktora",
+      "keywords": "tezli yüksek lisans AGNO, 2.50 ortalama, ders başarısı",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.795Z",
+      "updated_at": "2026-09-10T16:33:02.504Z"
+    },
+    {
+      "id": 69,
+      "question": "Tezli yüksek lisans tez jürisi kaç kişiden oluşur ve dış üye zorunluluğu var mıdır?",
+      "answer": "Jüri, biri öğrencinin tez danışmanı, iki Üniversite dışından ve iki de üniversite içinden olmak üzere  beş öğretim üyesinden oluşur.",
+      "category": "Tezli / Doktora",
+      "keywords": "tezli yüksek lisans jürisi, üç veya beş üye, üniversite dışı üye",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.759Z",
+      "updated_at": "2026-09-07T14:04:46.233Z"
+    },
+    {
+      "id": 68,
+      "question": "Tezli yüksek lisans programında dördüncü yarıyıl dolmadan tez savunma başvurusu yapılabilir mi?",
+      "answer": "Hayır, dördüncü yarıyıl tamamlanmadan tez savunma başvurusu yapılamaz.",
+      "category": "Tezli / Doktora",
+      "keywords": "tezli yüksek lisans, tez savunma başvurusu, dördüncü yarıyıl kuralı",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.756Z",
+      "updated_at": "2026-09-04T08:02:11.071Z"
+    },
+    {
+      "id": 67,
+      "question": "Tezli yüksek lisans programının ders yükü ve minimum AKTS kredi şartı nedir?",
+      "answer": "Tezli yüksek lisans programı, toplam 21 krediden ve 120 AKTS kredisinden az olmamak koşuluyla seminer dâhil en az 8 ders ve uzmanlık alan dersi ile tez çalışmasından oluşur.",
+      "category": "Tezli / Doktora",
+      "keywords": "tezli yüksek lisans ders yükü, 120 AKTS, 21 kredi, en az 8 ders",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.753Z",
+      "updated_at": "2026-09-04T08:02:06.315Z"
+    },
+    {
+      "id": 66,
+      "question": "Tezli yüksek lisans programında dördüncü yarıyıl sonunda derslerini veya seminerini tamamlayamayan öğrencinin ilişiği kesilir mi?",
+      "answer": "Evet, dördüncü yarıyıl sonunda öğretim planında yer alan kredili derslerini ve seminer dersini başarıyla tamamlayamayan veya bu süre içerisinde 2,50 genel not ortalamasını sağlayamayan öğrencilerin enstitü ile ilişiği kesilir.",
+      "category": "Tezli / Doktora",
+      "keywords": "tezli yüksek lisans, 2.50 AGNO, dördüncü yarıyıl, ilişik kesilmesi",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.751Z",
+      "updated_at": "2026-09-04T08:02:01.406Z"
+    },
+    {
+      "id": 65,
+      "question": "Tezli yüksek lisans programının normal ve azami tamamlama süreleri kaç yarıyıldır?",
+      "answer": "Tezli yüksek lisans programının süresi bilimsel hazırlıkta geçen süre hariç kayıt yaptırıp yaptırmadıklarına bakılmaksızın dört yarıyıl olup, azami tamamlama süresi altı yarıyıldır.",
+      "category": "Tezli / Doktora",
+      "keywords": "tezli yüksek lisans süresi, dört yarıyıl, azami altı yarıyıl",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.749Z",
+      "updated_at": "2026-09-04T08:01:55.754Z"
+    },
+    {
+      "id": 64,
+      "question": "Lisans derecesi ile doktora programına kaydolup tezinde başarılı olamayan öğrenci tezsiz yüksek lisans diplomasını nasıl alabilir?",
+      "answer": "Talebi hâlinde, tezsiz yüksek lisans programının gerekli kredi yükünü, dönem projesini ve tezsiz yüksek lisans programının asgari mezuniyet şartlarını en geç bir yarıyılda tamamlaması koşuluyla tezsiz yüksek lisans diploması verilir.",
+      "category": "Tezli / Doktora",
+      "keywords": "lisans sonrası doktora, tezsiz yüksek lisans diploması, bir yarıyıl koşulu",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.746Z",
+      "updated_at": "2026-09-04T08:01:51.290Z"
+    },
+    {
+      "id": 63,
+      "question": "Doktora tez savunmasında tezi hakkında düzeltme kararı verilen öğrenciye ne kadar süre verilir?",
+      "answer": "Tezi hakkında düzeltme kararı verilen öğrenci en geç altı ay içinde gerekli düzeltmeleri yaparak tezini aynı jüri önünde yeniden savunur.",
+      "category": "Tezli / Doktora",
+      "keywords": "doktora tez düzeltme, altı ay süre, yeniden savunma",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.743Z",
+      "updated_at": "2026-09-04T08:01:47.333Z"
+    },
+    {
+      "id": 62,
+      "question": "Doktora tez savunma jürisi kaç asil ve kaç yedek üyeden oluşur?",
+      "answer": "Doktora tez jürisi, üçü öğrencinin tez izleme komitesinde yer alan öğretim üyeleri ve en az ikisi Üniversite dışından olmak üzere danışman dâhil beş asil, en az ikisi Üniversite dışından olmak üzere üç yedek öğretim üyesinden oluşur.",
+      "category": "Tezli / Doktora",
+      "keywords": "doktora tez jürisi, beş asil üye, üç yedek üye, üniversite dışı üye",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.738Z",
+      "updated_at": "2026-09-04T08:01:42.022Z"
+    },
+    {
+      "id": 61,
+      "question": "Doktora TİK raporlarında kaç kez başarısız bulunan öğrencinin ilişiği kesilir?",
+      "answer": "TİK tarafından veya enstitü yönetim kurulu kararı ile üst üste iki kez veya aralıklı olarak üç kez başarısız bulunan öğrencinin enstitü ile ilişiği kesilir.",
+      "category": "Tezli / Doktora",
+      "keywords": "TİK başarısızlık, ilişik kesilmesi, üst üste iki kez, aralıklı üç kez",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.735Z",
+      "updated_at": "2026-09-04T08:01:38.493Z"
+    },
+    {
+      "id": 60,
+      "question": "Bir doktora tezinin sonuçlanabilmesi için en az kaç TİK raporu sunulması gerekir?",
+      "answer": "Öğrencinin tezinin sonuçlanabilmesi için en az üç TİK raporu sunması gerekir.",
+      "category": "Tezli / Doktora",
+      "keywords": "doktora tez sonuçlanması, üç TİK raporu, tez izleme süreci",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.731Z",
+      "updated_at": "2026-09-04T08:01:33.121Z"
+    },
+    {
+      "id": 59,
+      "question": "Tez önerisi kabul edilen doktora öğrencisi için Tez İzleme Komitesi yılda kaç kez ve hangi dönemlerde toplanır?",
+      "answer": "TİK, Ocak-Haziran ve Temmuz-Aralık ayları arasında birer defa olmak üzere yılda en az iki kez toplanır.",
+      "category": "Tezli / Doktora",
+      "keywords": "TİK toplantı zamanı, Ocak-Haziran, Temmuz-Aralık, yılda iki kez",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.728Z",
+      "updated_at": "2026-09-04T08:01:07.896Z"
+    },
+    {
+      "id": 58,
+      "question": "Doktora tez önerisi savunmasından ne kadar önce yazılı rapor enstitü ve TİK üyelerine teslim edilmelidir?",
+      "answer": "Öğrenci, sözlü savunmadan en az on beş gün önce tez önerisi ile ilgili yazılı bir nüsha raporu enstitüye, birer nüsha da TİK üyelerine teslim eder.",
+      "category": "Tezli / Doktora",
+      "keywords": "tez önerisi raporu, on beş gün, TİK teslimi",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.724Z",
+      "updated_at": "2026-09-04T08:01:00.334Z"
+    },
+    {
+      "id": 56,
+      "question": "Doktora Tez İzleme Komitesinde üyelik dağılımı nasıl olmalıdır?",
+      "answer": "Komitede tez danışmanından başka EABD/EASD içinden bir üye ve EABD/EASD dışından bir üye yer alır.",
+      "category": "Tezli / Doktora",
+      "keywords": "TİK yapısı, tez danışmanı, EABD içi üye, EABD dışı üye",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.717Z",
+      "updated_at": "2026-09-04T08:00:55.966Z"
+    },
+    {
+      "id": 57,
+      "question": "Doktora yeterlik sınavını geçen öğrenci tez önerisi savunmasını en geç ne kadar süre içinde yapmalıdır?",
+      "answer": "Doktora yeterlik sınavını başarı ile tamamlayan öğrenci, en geç altı ay içinde tez önerisini tez izleme komitesi önünde sözlü olarak savunur.",
+      "category": "Tezli / Doktora",
+      "keywords": "doktora tez önerisi, sözlü savunma, altı ay süresi",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.720Z",
+      "updated_at": "2026-09-04T08:00:28.845Z"
+    },
+    {
+      "id": 55,
+      "question": "Doktora Tez İzleme Komitesi (TİK) ne zaman ve kaç kişiden oluşturulur?",
+      "answer": "Yeterlik sınavında başarılı bulunan öğrenci için danışmanın görüşü, ilgili EABDB/EASDB’nin önerisi ve enstitü yönetim kurulunun onayı ile bir ay içinde üç öğretim üyesinden oluşan bir Tez İzleme Komitesi kurulur.",
+      "category": "Tezli / Doktora",
+      "keywords": "tez izleme komitesi, TİK, üç öğretim üyesi, bir ay",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.714Z",
+      "updated_at": "2026-09-04T08:00:19.198Z"
+    },
+    {
+      "id": 54,
+      "question": "Doktora yeterlik sınavında iki kez başarısız olan öğrenciye ne uygulanır?",
+      "answer": "Doktora yeterlik sınavında ikinci kez başarısız olan öğrencilerin enstitü ile ilişiği kesilir.",
+      "category": "Tezli / Doktora",
+      "keywords": "doktora yeterlik, ikinci kez başarısızlık, ilişik kesilmesi",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.711Z",
+      "updated_at": "2026-09-04T08:00:08.831Z"
+    },
+    {
+      "id": 53,
+      "question": "Doktora yeterlik sınavının yazılı ve sözlü aşamalarında başarılı sayılmak için en az kaç puan almak gerekir?",
+      "answer": "Yazılı sınav notu en az 75/100 olarak değerlendirilen öğrenci sözlü sınava alınır; sözlü sınav notu da en az 75/100 olan öğrenci yeterlik sınavından başarılı sayılır.",
+      "category": "Tezli / Doktora",
+      "keywords": "yeterlik sınavı, yazılı sınav notu, sözlü sınav notu, 75 puan",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.706Z",
+      "updated_at": "2026-09-04T08:00:00.535Z"
+    },
+    {
+      "id": 70,
+      "question": "Tezli yüksek lisans jürisi üç kişiden oluştuğunda ikinci tez danışmanı jüri üyesi olabilir mi?",
+      "answer": "Jürinin üç kişiden oluşması durumunda ikinci tez danışmanı jüri üyesi olamaz.",
+      "category": "Tezli / Doktora",
+      "keywords": "ikinci tez danışmanı, üç kişilik jüri, jüri üyeliği kısıtlaması",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.762Z",
+      "updated_at": "2026-09-04T07:59:52.160Z"
+    },
+    {
+      "id": 52,
+      "question": "Doktora yeterlik sınav jürisi kaç kişiden ve kimlerden oluşur?",
+      "answer": "Sınav jürisi, en az ikisi Üniversite dışından olmak üzere, danışman dâhil beş öğretim üyesinden oluşur. Danışmanın oy hakkı olmaması durumunda jüri altı öğretim üyesinden oluşur.",
+      "category": "Tezli / Doktora",
+      "keywords": "doktora yeterlik jürisi, üniversite dışı üye, beş öğretim üyesi, danışman oy hakkı",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.703Z",
+      "updated_at": "2026-09-04T07:59:40.786Z"
+    },
+    {
+      "id": 51,
+      "question": "Doktora yeterlik komitesi kaç kişiden oluşur ve komite kim tarafından onaylanır?",
+      "answer": "Doktora yeterlik komitesi, EABDB/EASDB tarafından önerilen ve enstitü yönetim kurulu tarafından onaylanan beş kişilik bir komitedir.",
+      "category": "Tezli / Doktora",
+      "keywords": "doktora yeterlik komitesi, beş kişi, EABDB, enstitü yönetim kurulu",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-04T07:58:14.688Z",
+      "updated_at": "2026-09-04T07:59:21.300Z"
+    },
+    {
+      "id": 40,
+      "question": "Ulusal veya uluslararası etkinliklerde Türkiye'yi veya Üniversiteyi temsil eden öğrencilerin mazeret süresi nasıl hesaplanır?",
+      "answer": "Belgelendirmek şartıyla ve ilgili kurulca uygun görülmesi halinde, yol dâhil katıldıkları süreler boyunca mazeretleri değerlendirilir.",
+      "category": "Kayıt İşlemleri",
+      "keywords": "etkinlik, temsil, yol süresi, ulusal uluslararası",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-03T21:17:56.160Z",
+      "updated_at": "2026-09-03T21:20:37.863Z"
+    },
+    {
+      "id": 37,
+      "question": "Askerlik mazeretinin değerlendirilebilmesi için öğrencilerin hangi durumu belgelendirmesi gerekir?",
+      "answer": "Öğrencilerin tecil hakkını kaybetme veya tecilin kaldırılarak askere alınma durumlarını belgelendirmeleri gerekmektedir.",
+      "category": "Kayıt İşlemleri",
+      "keywords": "askerlik mazereti, tecil hakkı, askere alınma, belgelendirme",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-03T21:17:56.160Z",
+      "updated_at": "2026-09-03T21:20:27.878Z"
+    },
+    {
+      "id": 36,
+      "question": "Gözaltı, tutukluluk veya mahkûmiyet durumlarında mazeret değerlendirmesi için hangi kriterler aranır?",
+      "answer": "Durumun belgelendirilmesi, mahkûmiyetin öğrencilik sıfatını kaldırmaması veya 2547 sayılı Yükseköğretim Kanunu'nun 54'üncü maddesi gereğince ilişik kesilmeyi gerektirmemesi ve ilgili kurulca uygun görülmesi gerekir.",
+      "category": "Kayıt İşlemleri",
+      "keywords": "gözaltı, tutukluluk, mahkûmiyet, öğrencilik sıfatı, 2547 sayılı kanun",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-03T21:17:56.159Z",
+      "updated_at": "2026-09-03T21:20:20.397Z"
+    },
+    {
+      "id": 35,
+      "question": "Hangi yakınlarının ölüm halini belgelendiren öğrencilerin mazeret talepleri değerlendirilir?",
+      "answer": "Anne, baba, kardeş, eş ve çocuklarının ölümünü belgelendiren ve talepleri ilgili kurul tarafından uygun görülen öğrencilerin mazeretleri değerlendirilir.",
+      "category": "Kayıt İşlemleri",
+      "keywords": "ölüm mazereti, birinci derece yakınlar, vefat belgesi, mazeret talebi",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-03T21:17:56.159Z",
+      "updated_at": "2026-09-03T21:20:13.847Z"
+    },
+    {
+      "id": 32,
+      "question": "Sağlıkla ilgili mazeret başvurularında hangi belgeler değerlendirmeye alınır?",
+      "answer": "Öğrencilerin sağlık sorunları ile ilgili hastane ve aile hekimliğinden alınan istirahat raporları değerlendirilir.",
+      "category": "Kayıt İşlemleri",
+      "keywords": "sağlık mazereti, hastane raporu, aile hekimliği, istirahat raporu",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-03T21:17:56.158Z",
+      "updated_at": "2026-09-03T21:20:06.577Z"
+    },
+    {
+      "id": 44,
+      "question": "Haklı ve Geçerli Nedenler Yönergesi'nde hüküm bulunmayan hallerde ne yapılır?",
+      "answer": "Yönergede hüküm bulunmayan hallerde ilgili diğer mevzuat hükümleri ile Üniversite Yönetim Kurulu ve/veya Senato kararları uygulanır.",
+      "category": "Kayıt İşlemleri",
+      "keywords": "hüküm bulunmayan haller, mevzuat, Üniversite Yönetim Kurulu, Senato kararları",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-03T21:17:56.161Z",
+      "updated_at": "2026-09-03T21:19:51.218Z"
+    },
+    {
+      "id": 34,
+      "question": "Yakınlarının ağır hastalığı nedeniyle öğrenimine ara vermek isteyen öğrencilerin talepleri hangi şartlarda kabul edilir?",
+      "answer": "Öğrencilerin birinci dereceden hısımlarının ağır hastalığı halinde, bakacak başka kimsesinin bulunmadığını belgelendirmesi ve ilgili kurul tarafından uygun görülmesi halinde talepleri değerlendirilir.",
+      "category": "Kayıt İşlemleri",
+      "keywords": "ağır hastalık, birinci derece hısım, öğrenime ara verme, bakacak kimse bulunmaması",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-03T21:17:56.159Z",
+      "updated_at": "2026-09-03T21:19:34.216Z"
+    },
+    {
+      "id": 33,
+      "question": "Doğal afetler nedeniyle öğrenimine ara vermek zorunda kalan öğrencilerin mazeret başvurusu şartları nelerdir?",
+      "answer": "İlgili mahallin en büyük mülki amirince veya yetkili kıldığı tüzel kişiler/kuruluşlar tarafından verilen bir belge ile belgelendirilmesi ve ilgili kurul tarafından uygun görülmesi şartıyla mazeret talepleri değerlendirilir.",
+      "category": "Kayıt İşlemleri",
+      "keywords": "doğal afet, mülki amir, öğrenime ara verme, mazeret belgesi",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-03T21:17:56.158Z",
+      "updated_at": "2026-09-03T21:19:25.018Z"
+    },
+    {
+      "id": 31,
+      "question": "Haklı ve Geçerli Nedenler Yönergesi hangi öğrencileri kapsamaktadır?",
+      "answer": "Yönerge, mazeret başvurusunda bulunan Kütahya Dumlupınar Üniversitesine bağlı tüm enstitü, fakülte, yüksekokul ve meslek yüksekokullarında kayıtlı öğrencileri kapsar.",
+      "category": "Kayıt İşlemleri",
+      "keywords": "yönerge kapsamı, kayıtlı öğrenciler, enstitü, fakülte, meslek yüksekokulu",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-03T21:17:56.157Z",
+      "updated_at": "2026-09-03T21:19:18.182Z"
+    },
+    {
+      "id": 30,
+      "question": "Kütahya Dumlupınar Üniversitesi Haklı ve Geçerli Nedenler Yönergesi'nin amacı nedir?",
+      "answer": "Bu yönergenin amacı, Üniversiteye bağlı tüm enstitü, fakülte, yüksekokul ve meslek yüksekokullarında kayıtlı öğrencilerin mazeret başvurularındaki değerlendirme esaslarını belirlemektir.",
+      "category": "Kayıt İşlemleri",
+      "keywords": "yönerge amacı, mazeret başvurusu, değerlendirme esasları, öğrenci mazeretleri",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-03T21:17:56.122Z",
+      "updated_at": "2026-09-03T21:19:09.973Z"
+    },
+    {
+      "id": 27,
+      "question": "Kayıt dondurma kararı verilen öğrencilerin ilgili dönemdeki derslerine hangi not verilir?",
+      "answer": "Kayıt dondurma kararı verilen öğrencilerin ilgili dönemdeki tüm dersleri için İZ notu verilir.",
+      "category": "Kayıt İşlemleri",
+      "keywords": "kayıt dondurma, İZ notu, ders notu, enstitü kararı",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-02T20:55:41.313Z",
+      "updated_at": "2026-09-02T20:55:41.313Z"
+    },
+    {
+      "id": 26,
+      "question": "Yeni kayıt yaptıran lisansüstü öğrencilerin danışmanı atanıncaya kadar danışmanlık görevini kim yürütür?",
+      "answer": "Yeni kayıt yaptıran öğrencilerin danışmanlık görevini, danışmanları atanıncaya kadar ilgili anabilim/anasanat dalı başkanı yürütür.",
+      "category": "Kayıt İşlemleri",
+      "keywords": "ders kaydı, danışmanlık, anabilim dalı başkanı, yeni kayıt, lisansüstü",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-02T20:54:37.248Z",
+      "updated_at": "2026-09-02T20:54:37.248Z"
+    },
+    {
+      "id": 25,
+      "question": "Lisansüstü program kontenjanları ve program ilanları ne zaman ve nasıl ilan edilir?",
+      "answer": "Lisansüstü eğitim-öğretimde hangi programlara öğrenci alınacağı ve kontenjanları, her yarıyılın başlamasından dört hafta öncesine kadar ilgili EABDK/EASDK önerisi, enstitü kurulu kararı ve Senato onayı ile belirlenerek enstitü müdürlüğünce ilan edilir.",
+      "category": "Kayıt İşlemleri",
+      "keywords": "kontenjan ilanı, lisansüstü kontenjan, senato onayı, enstitü müdürlüğü, başvuru ilanı",
+      "source": "Lisansüstü Eğitim Enstitüsü",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-02T20:44:14.983Z",
+      "updated_at": "2026-09-02T20:44:14.983Z"
+    },
+    {
+      "id": 24,
+      "question": "Af başvurusunda bulunacak T.C. uyruklu erkek adayların sisteme yüklemesi gereken askerlik belgesi nedir?",
+      "answer": "T.C. uyruklu erkek adayların e-Devlet üzerinden alacakları Askerlik Durum Belgesi'ni sisteme yüklemeleri gerekmektedir.",
+      "category": "Af / Askerlik",
+      "keywords": "",
+      "source": "Yapay zekâ ile oluşturuldu",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-02T20:24:43.858Z",
+      "updated_at": "2026-09-02T20:24:43.858Z"
+    },
+    {
+      "id": 23,
+      "question": "Af başvurusu onaylanan adayların kayıt işlemleri şahsen yapılmak zorunda mıdır?",
+      "answer": "Başvurusu olumlu değerlendirilen ve onay e-postası alan adaylar kayıtlarını Enstitüye şahsen yapabilecekleri gibi noterden vekalet verecekleri kişi aracılığıyla da yaptırabilirler.",
+      "category": "Af / Askerlik",
+      "keywords": "",
+      "source": "Yapay zekâ ile oluşturuldu",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-02T20:24:41.617Z",
+      "updated_at": "2026-09-02T20:24:41.617Z"
+    },
+    {
+      "id": 22,
+      "question": "Af Kanunu'nun yürürlüğe girdiği tarihte askerlik görevini yapmakta olan yükümlüler af haklarından nasıl yararlanabilir?",
+      "answer": "Af Kanunu'nun yürürlüğe girdiği tarihte askerlik görevini yapmakta olanlar, terhislerini takip eden iki ay içinde ilgili yükseköğretim kurumuna başvurmaları halinde af haklarından yararlanabilirler.",
+      "category": "Af / Askerlik",
+      "keywords": "",
+      "source": "Yapay zekâ ile oluşturuldu",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-02T20:24:37.102Z",
+      "updated_at": "2026-09-02T20:24:37.102Z"
+    },
+    {
+      "id": 21,
+      "question": "Mücbir sebepler veya sağlık sorunları nedeniyle af başvuru süresini kaçıranlar için aranan başvuru şartları nelerdir?",
+      "answer": "Mücbir sebeplerle başvuramayanlar mücbir sebebin ortadan kalktığı tarihten itibaren bir ay içinde; sağlık nedenleriyle başvuramayanlar ise buna ilişkin heyet raporunu 09/12/2026 tarihi mesai bitimine kadar ibraz etmeleri halinde af kanunundan yararlanabilirler.",
+      "category": "Af / Askerlik",
+      "keywords": "",
+      "source": "Yapay zekâ ile oluşturuldu",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-02T20:24:29.384Z",
+      "updated_at": "2026-09-02T20:24:29.384Z"
+    },
+    {
+      "id": 20,
+      "question": "7592 sayılı Kanun kapsamındaki af başvuruları için belirlenen son başvuru tarihi ve saati nedir?",
+      "answer": "7592 sayılı Kanun kapsamında af başvuruları için belirlenen son tarih 09 Aralık 2026 saati 23:59'dur.",
+      "category": "Af / Askerlik",
+      "keywords": "",
+      "source": "Yapay zekâ ile oluşturuldu",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-02T20:24:26.577Z",
+      "updated_at": "2026-09-02T20:24:26.577Z"
+    },
+    {
+      "id": 19,
+      "question": "Başvurusu olumlu değerlendirilen adayların kesin kayıt işlemleri nasıl gerçekleştirilir?",
+      "answer": "Başvurusu olumlu değerlendirilen ve kendisine e-posta gönderilen adayların kayıtları, Enstitüye şahsen başvurmaları ya da noterden vekalet verecekleri kişi aracılığı ile yapılmaktadır.",
+      "category": "Af / Askerlik",
+      "keywords": "",
+      "source": "Yapay zekâ ile oluşturuldu",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-02T19:51:15.754Z",
+      "updated_at": "2026-09-02T19:51:15.754Z"
+    },
+    {
+      "id": 18,
+      "question": "Af Kanunu’nun yürürlüğe girdiği tarihte askerlik görevini yapmakta olanlar başvuru haklarından nasıl yararlanabilirler?",
+      "answer": "Askerlik görevini yapmakta olanlar, terhislerini takip eden iki ay içinde ilgili yükseköğretim kurumuna başvurmaları halinde bu kanundaki haklardan yararlanabilirler.",
+      "category": "Af / Askerlik",
+      "keywords": "",
+      "source": "Yapay zekâ ile oluşturuldu",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-02T19:51:05.985Z",
+      "updated_at": "2026-09-02T19:51:05.985Z"
+    },
+    {
+      "id": 17,
+      "question": "Af Kanunu kapsamında başvuru yapmak isteyen öğrenciler için belirlenen son başvuru tarihi nedir?",
+      "answer": "Af başvuruları için belirlenen son tarih 09 Aralık 2026'dır (saat 23:59'a kadar). Süresi içerisinde yapılmayan başvurular değerlendirmeye alınmayacaktır.",
+      "category": "Af / Askerlik",
+      "keywords": "",
+      "source": "Yapay zekâ ile oluşturuldu",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-02T19:50:50.482Z",
+      "updated_at": "2026-09-02T19:50:50.482Z"
+    },
+    {
+      "id": 15,
+      "question": "Tezsiz yüksek lisansın ek kontenjan başvurularında okul tanıma belgesi gerekli mi?",
+      "answer": "Türk vatandaşı ise gerekli değil ancak okul tanıma belgesi yerine transkript ve diploma yükleyebilir. Yurt dışından mezun olan yabancı öğrenciler için okul tanıma belgesi zorunludur.",
+      "category": "Tezsiz",
+      "keywords": "okul tanıma, tezsiz, ek kontenjan",
+      "source": "LEE",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-01T12:56:34.218Z",
+      "updated_at": "2026-09-01T12:56:34.218Z"
+    },
+    {
+      "id": 14,
+      "question": "Bilim mülakat sınavı tarihi ve detaylarını nereden bulabilirim?",
+      "answer": "Web sayfasında yayımlandı.",
+      "category": "Tezli / Doktora",
+      "keywords": "sınav, mülakat",
+      "source": "LEE",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-01T12:52:02.504Z",
+      "updated_at": "2026-09-01T12:52:02.504Z"
+    },
+    {
+      "id": 13,
+      "question": "Af kayıtları için süre aralığı nedir?",
+      "answer": "Kayıtlar 9 Aralığa kadar sürecektir. Fakat Güz Döneminde eğitim yılına başlamak isteyenler 14 Eylül tarihinden önce kayıt yaptırmalıdır.",
+      "category": "Af / Askerlik",
+      "keywords": "af, kayıt, tarih",
+      "source": "LEE",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-01T12:29:34.112Z",
+      "updated_at": "2026-09-01T12:29:34.112Z"
+    },
+    {
+      "id": 12,
+      "question": "Af başvurusu ne zaman sonlanıyor?",
+      "answer": "Başvurular 9 Aralık tarihine kadar devam edecektir.",
+      "category": "Tarihler",
+      "keywords": "af, tarih, başvuru",
+      "source": "LEE",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-01T12:26:56.450Z",
+      "updated_at": "2026-09-01T12:26:56.450Z"
+    },
+    {
+      "id": 11,
+      "question": "Ders kayıtları ne zaman?",
+      "answer": "Ders kayıtları 14 Eylül'de başlayacak.",
+      "category": "Tarihler",
+      "keywords": "ders, kayıt, tarih",
+      "source": "LEE",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-01T12:25:53.182Z",
+      "updated_at": "2026-09-01T12:25:53.182Z"
+    },
+    {
+      "id": 9,
+      "question": "Tez savunma aşamaları nasıl ilerleyor?",
+      "answer": "Web sitemizden \"Mezun Adayı\" kısmına tıklayarak yüksek lisans ve doktora için süreç akış şemasına ulaşabilirsiniz.",
+      "category": "Tezli / Doktora",
+      "keywords": "tez, savunma, aşama",
+      "source": "LEE",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-01T12:23:02.070Z",
+      "updated_at": "2026-09-01T12:23:02.070Z"
+    },
+    {
+      "id": 8,
+      "question": "Bölümüm bilim mülakat sınavı listesinde yok, sınava girecek miyim?",
+      "answer": "Listede olmayan bölümler sınava girmeyecektir.",
+      "category": "Tezli / Doktora",
+      "keywords": "sınav, mülakat",
+      "source": "LEE",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-01T06:32:27.279Z",
+      "updated_at": "2026-09-01T06:32:27.279Z"
+    },
+    {
+      "id": 7,
+      "question": "Tez aşamasında bölüm onayı için hangi belge gerekli?",
+      "answer": "Bölüm onayı için tez inceleme formu gerekli.",
+      "category": "Tezli / Doktora",
+      "keywords": "tez, onay, bölüm, belge",
+      "source": "LEE",
+      "status": "Güncel",
+      "generated_by": "manual",
+      "created_at": "2026-09-01T06:23:56.963Z",
+      "updated_at": "2026-09-01T06:23:56.963Z"
+    }
+  ],
+  "internalCodes": []
+};
+
+    let allQuestions = EMBEDDED_DATA.questions || [];
+    let allCodes = EMBEDDED_DATA.internalCodes || [];
+    let selectedCat = '';
+    let activeTab = 'questions';
+
+    // VERİLERİ YÜKLE
+    async function init() {
+      try {
+        let data = EMBEDDED_DATA;
+        try {
+          const res = await fetch('data.json?v=' + Date.now());
+          if (res.ok) {
+            data = await res.json();
+            allQuestions = data.questions || [];
+            allCodes = data.internalCodes || [];
+          }
+        } catch (_) {
+          // fetch başarısız olursa gömülü veri zaten devrede
+        }
+        
+        if (data.updatedAt) {
+          document.getElementById('lastUpdated').textContent = 'Son Güncelleme: ' + data.updatedAt;
+        }
+
+        renderCategories(data.categories || []);
+        renderQuestions();
+      } catch (err) {
+        console.error('Veri hatası:', err);
+        renderCategories(EMBEDDED_DATA.categories || []);
+        renderQuestions();
+      }
+    }
+
+    // KATEGORİLERİ ÇİZ
+    function renderCategories(categories) {
+      const bar = document.getElementById('categoriesBar');
+      categories.forEach(cat => {
+        const name = typeof cat === 'string' ? cat : cat.name;
+        const btn = document.createElement('button');
+        btn.className = 'cat-pill';
+        btn.textContent = name;
+        btn.dataset.category = name;
+        btn.onclick = () => {
+          document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedCat = name;
+          renderQuestions();
+        };
+        bar.appendChild(btn);
+      });
+
+      // "Tümü" butonu
+      bar.querySelector('[data-category=""]').onclick = () => {
+        document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+        bar.querySelector('[data-category=""]').classList.add('active');
+        selectedCat = '';
+        renderQuestions();
+      };
+    }
+
+    // SORULARI FİLTRELE VE ÇİZ
+    function renderQuestions() {
+      const search = document.getElementById('searchInput').value.toLowerCase().trim();
+      const container = document.getElementById('questionsContainer');
+      
+      const filtered = allQuestions.filter(q => {
+        const matchCat = !selectedCat || q.category === selectedCat;
+        const matchSearch = !search || 
+          (q.question && q.question.toLowerCase().includes(search)) ||
+          (q.answer && q.answer.toLowerCase().includes(search)) ||
+          (q.keywords && q.keywords.toLowerCase().includes(search));
+        return matchCat && matchSearch;
+      });
+
+      const qEl = document.getElementById('qCount');
+      if (qEl) qEl.textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: #64748b;">
+            Aradığınız kriterlere uygun kayıt bulunamadı.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(q => `
+        <article class="card" onclick="openModal(${q.id})">
+          <div class="card-top">
+            <span class="card-cat">${q.category || 'Genel'}</span>
+          </div>
+          <h3>${q.question}</h3>
+          <p>${q.answer.length > 170 ? q.answer.slice(0, 170) + '...' : q.answer}</p>
+          ${q.keywords ? `
+            <div class="card-keywords">
+              ${q.keywords.split(',').slice(0, 3).map(k => `<span class="kw-tag">${k.trim()}</span>`).join('')}
+            </div>
+          ` : ''}
+          <div class="card-footer">
+            <span>Detayları Oku →</span>
+            ${q.source ? `<small>${q.source}</small>` : ''}
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // ARAMA DİNLEYİCİSİ (Yazarken canlı arama)
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const val = e.target.value;
+      document.getElementById('clearSearch').style.display = val ? 'block' : 'none';
+      renderQuestions();
+    });
+
+    document.getElementById('clearSearch').addEventListener('click', () => {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearch').style.display = 'none';
+      renderQuestions();
+    });
+
+    // MODAL AÇ / KAPAT
+    function openModal(id) {
+      const q = allQuestions.find(x => x.id === id);
+      if (!q) return;
+      document.getElementById('mCategory').textContent = q.category || 'Genel';
+      document.getElementById('mQuestion').textContent = q.question;
+      document.getElementById('mAnswer').textContent = q.answer;
+      document.getElementById('mSource').innerHTML = q.source ? `Kaynak: <strong>${q.source}</strong>` : '';
+      document.getElementById('detailModal').classList.add('open');
+    }
+
+    document.getElementById('mClose').addEventListener('click', () => {
+      document.getElementById('detailModal').classList.remove('open');
+    });
+
+    document.getElementById('detailModal').addEventListener('click', (e) => {
+      if (e.target.id === 'detailModal') {
+        document.getElementById('detailModal').classList.remove('open');
+      }
+    });
+
+    init();
+  </script>
+</body>
+</html>
