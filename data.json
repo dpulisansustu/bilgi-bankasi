@@ -12,18 +12,6 @@
   ],
   "questions": [
     {
-      "id": 93,
-      "question": "deneme",
-      "answer": "deneme",
-      "category": "Af / Askerlik",
-      "keywords": "",
-      "source": "Lisansüstü Eğitim Enstitüsü",
-      "status": "Güncel",
-      "generated_by": "manual",
-      "created_at": "2026-09-10T19:56:56.003Z",
-      "updated_at": "2026-09-10T19:56:56.003Z"
-    },
-    {
       "id": 82,
       "question": "Tezli yüksek lisans öğrencilerinin derslerini başarıyla tamamlamış sayılabilmesi için AGNO alt sınırı nedir?",
       "answer": "Tezli yüksek lisans öğreniminde öğrencilerin derslerini başarıyla tamamlamış sayılabilmesi için AGNO'nun en az 2,50 olması gerekir.",
